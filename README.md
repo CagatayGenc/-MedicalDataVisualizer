@@ -27,11 +27,11 @@ def draw_heat_map():
                  (df['weight'] >= df['weight'].quantile(0.025)) &
                  (df['weight'] <= df['weight'].quantile(0.975))
                  ]
+
     corr = df_heat.corr()
     mask = np.triu(np.ones_like(corr, dtype=bool))
     fig, ax = plt.subplots(figsize=(16, 9))
     sns.heatmap(corr, mask=mask, square=True, linewidths=0.5, annot=True, fmt="0.1f")
     fig.savefig('heatmap.png')
     return fig
-
 ```
